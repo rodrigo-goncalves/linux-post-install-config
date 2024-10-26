@@ -4,20 +4,17 @@
 apt update
 
 setup_pipx() {
-    sudo apt install pipx -y
+    apt install pipx -y
     pipx ensurepath
 }
 
 setup_pipx
 
-pipx install --include-deps ansible
+git clone https://github.com/rodrigo-goncalves/linux-post-install-config.git /tmp
 
-git clone https://github.com/rodrigo-goncalves/linux-post-install-config.git
+chmod 755 /tmp/linux-post-install-config/initial_as_user.sh
 
-cd linux-post-install-config
+chown -R ansible:ansible /tmp/linux-post-install-config
 
-ansible-playbook --connection=local 127.0.0.1, playbook.yml
+sudo -H -u ansible bash -c '/tmp/linux-post-install-config/initial_as_user.sh'
 
-CURR=$(date +"%Y-%m-%dT%H:%M:%S%z")
-
-sudo echo "${CURR}" >/etc/birth_certificate
