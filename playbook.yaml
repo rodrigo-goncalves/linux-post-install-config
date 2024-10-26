@@ -1,0 +1,35 @@
+- name: Install NeoVIM
+  ansible.builtin.apt:
+    name: neovim
+    update_cache: yes
+    state: present
+
+- name: Install ZSH
+  ansible.builtin.apt:
+    name: neovim
+    update_cache: yes
+    state: present
+
+- name: Create user rodrigo
+  ansible.builtin.user:
+    name: rodrigo
+    shell: /bin/zsh
+    groups: wheel
+    createhome: yes
+    append: yes
+
+- name: Create .ssh folder
+  ansible.builtin.file:
+    path: /home/rodrigo/.ssh
+    state: directory
+    owner: rodrigo
+    group: rodrigo
+    mode: 0700
+
+- name: Upload public SSH key
+  ansible.builtin.copy:
+    src: ./keys/ansible_key.pub
+    dest: /home/rodrigo/.ssh/key.pub
+    owner: rodrigo
+    group: rodrigo
+    mode: 0400
