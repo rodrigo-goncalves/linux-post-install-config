@@ -10,7 +10,7 @@ setup_pipx() {
 
 setup_pipx
 
-git clone https://github.com/rodrigo-goncalves/linux-post-install-config.git /tmp
+git clone https://github.com/rodrigo-goncalves/linux-post-install-config.git /tmp/linux-post-install-config
 
 chmod 755 /tmp/linux-post-install-config/initial_as_user.sh
 
