@@ -3,6 +3,8 @@
 
 pipx install --include-deps ansible
 
+pipx ensurepath
+
 ansible-playbook --connection=local 127.0.0.1, /tmp/linux-post-install-config/playbook.yml
 
 CURR=$(date +"%Y-%m-%dT%H:%M:%S%z")
