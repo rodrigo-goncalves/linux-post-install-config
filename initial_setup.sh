@@ -3,7 +3,7 @@
 
 setup_pipx() {
     apt update
-    apt install pipx
+    apt install pipx -y
     pipx ensurepath
     pipx ensurepath --global
 }
